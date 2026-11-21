@@ -1,0 +1,696 @@
+/* Arcade-specific styles */
+
+/* ==========================================================================
+   LOADING SCREEN
+   ========================================================================== */
+.loading-screen {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  gap: clamp(16px, 3vh, 28px);
+  padding: clamp(24px, 5vh, 60px) clamp(16px, 4vw, 32px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.loading-title {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-lg);
+  color: var(--primary);
+  text-shadow: 0 0 25px rgba(108, 99, 255, 0.6);
+  animation: pulse 1.5s ease-in-out infinite;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.loading-items {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.8vh, 16px);
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-sm);
+  color: var(--text-secondary);
+  max-width: clamp(280px, 88vw, 480px);
+  width: 100%;
+}
+
+.loading-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+.loading-item .done {
+  color: var(--success);
+  font-weight: bold;
+}
+
+.loading-bar-container {
+  width: 100%;
+  max-width: clamp(280px, 88vw, 480px);
+  height: clamp(16px, 2.5vh, 22px);
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.loading-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--pastel-lavender));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.6);
+}
+
+.loading-status {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-sm);
+  color: var(--accent);
+  max-width: clamp(280px, 85vw, 480px);
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   MAIN MENU (3D Lobby & Responsive Overlay)
+   ========================================================================== */
+.main-menu {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  padding: clamp(24px, 5vh, 60px) clamp(16px, 4vw, 32px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu-overlay > * {
+  pointer-events: auto;
+}
+
+.menu-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(16px, 4vw, 32px);
+  color: var(--accent);
+  text-shadow: 0 0 30px rgba(255, 217, 61, 0.5), 0 4px 0 rgba(0,0,0,0.3);
+  margin-bottom: clamp(6px, 1.2vh, 12px);
+  text-align: center;
+  line-height: 1.35;
+  max-width: 800px;
+}
+
+.menu-subtitle {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-sm);
+  color: var(--text-secondary);
+  margin-bottom: clamp(14px, 2.5vh, 24px);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 550px;
+}
+
+.menu-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4px, 1vh, 8px);
+  margin-bottom: clamp(18px, 3vh, 32px);
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  color: var(--pastel-blue);
+  background: rgba(10, 10, 46, 0.65);
+  padding: clamp(8px, 1.5vh, 14px) clamp(14px, 3vw, 24px);
+  border-radius: 12px;
+  border: 1px solid rgba(165, 180, 252, 0.3);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  max-width: 90vw;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vh, 14px);
+  align-items: center;
+  width: 100%;
+}
+
+.menu-buttons .arcade-btn {
+  width: clamp(260px, 85vw, 380px);
+  min-height: clamp(46px, 6vh, 56px);
+  font-size: var(--fs-pixel-sm);
+}
+
+/* ==========================================================================
+   GAME COLLECTION (Game Select Screen)
+   ========================================================================== */
+.game-select {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding: clamp(80px, 12vh, 120px) clamp(16px, 4vw, 36px) clamp(40px, 6vh, 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vh, 32px);
+  background: var(--bg);
+  box-sizing: border-box;
+}
+
+.game-select-title {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-lg);
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(255, 217, 61, 0.3);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 85vw, 360px), 1fr));
+  gap: clamp(14px, 2.5vw, 22px);
+  max-width: 1000px;
+  width: 100%;
+}
+
+.game-card {
+  background: var(--surface);
+  border: 2px solid var(--surface-light);
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 24px);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vh, 12px);
+  min-height: 140px;
+  position: relative;
+}
+
+.game-card:hover:not(.locked) {
+  border-color: var(--primary);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-3px);
+}
+
+.game-card.locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.game-card.completed {
+  border-color: var(--success);
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.15);
+}
+
+.game-card-icon {
+  font-size: clamp(28px, 5vw, 36px);
+}
+
+.game-card-title {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-sm);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.game-card-subtitle {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.game-card-status {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  color: var(--success);
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.game-card-lock {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  color: var(--error);
+  margin-top: auto;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   GAME HUD (In-game Header)
+   ========================================================================== */
+.game-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: max(10px, env(safe-area-inset-top, 10px)) clamp(14px, 3vw, 28px) 10px;
+  background: rgba(10, 10, 46, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--surface-light);
+  z-index: 100;
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.8vw, 16px);
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.hud-back {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-sm);
+  padding: 6px 12px;
+  min-height: 34px;
+  min-width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.hud-back:hover {
+  background: var(--primary);
+  color: var(--text);
+}
+
+.hud-title {
+  color: var(--accent);
+  font-size: var(--fs-pixel-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: clamp(120px, 35vw, 450px);
+}
+
+.hud-right {
+  display: flex;
+  gap: clamp(8px, 2vw, 18px);
+  color: var(--pastel-blue);
+  flex-shrink: 0;
+  font-size: var(--fs-pixel-xs);
+}
+
+.hud-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   ACHIEVEMENT POPUP NOTIFICATION
+   ========================================================================== */
+.achievement-popup {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top, 16px));
+  right: max(16px, env(safe-area-inset-right, 16px));
+  z-index: 1000;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: 14px;
+  padding: clamp(12px, 2vw, 18px) clamp(16px, 3vw, 24px);
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 16px);
+  box-shadow: var(--glow-accent);
+  cursor: pointer;
+  max-width: clamp(280px, 90vw, 380px);
+  box-sizing: border-box;
+}
+
+.achievement-popup-icon {
+  font-size: clamp(28px, 5vw, 34px);
+  flex-shrink: 0;
+}
+
+.achievement-popup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.achievement-popup-label {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.achievement-popup-name {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.achievement-popup-desc {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   SETTINGS SCREEN
+   ========================================================================== */
+.settings-screen {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding: clamp(80px, 12vh, 120px) clamp(16px, 4vw, 32px) clamp(40px, 6vh, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vh, 32px);
+  background: var(--bg);
+  box-sizing: border-box;
+}
+
+.settings-title {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-lg);
+  color: var(--accent);
+  text-align: center;
+}
+
+.settings-panel {
+  max-width: 520px;
+  width: 100%;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(12px, 2vh, 16px) 0;
+  border-bottom: 1px solid var(--surface-light);
+  font-size: var(--fs-body-base);
+  gap: 16px;
+}
+
+.settings-row label {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: var(--surface-light);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  flex-shrink: 0;
+}
+
+.toggle-switch.active {
+  background: var(--primary);
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: var(--text);
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.toggle-switch.active::after {
+  transform: translateX(24px);
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: clamp(100px, 25vw, 140px);
+  height: 6px;
+  background: var(--surface-light);
+  border-radius: 3px;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--primary);
+}
+
+.settings-danger {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid var(--error);
+  display: flex;
+  justify-content: center;
+}
+
+.settings-danger .arcade-btn {
+  border-color: var(--error);
+  color: var(--error);
+  width: 100%;
+}
+
+.settings-danger .arcade-btn:hover {
+  background: var(--error);
+  color: var(--text);
+}
+
+/* ==========================================================================
+   ACHIEVEMENTS PAGE
+   ========================================================================== */
+.achievements-screen {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding: clamp(80px, 12vh, 120px) clamp(16px, 4vw, 36px) clamp(40px, 6vh, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2.5vh, 28px);
+  background: var(--bg);
+  box-sizing: border-box;
+}
+
+.achievements-title {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-lg);
+  color: var(--accent);
+  text-align: center;
+}
+
+.achievements-count {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  color: var(--pastel-blue);
+  background: rgba(10, 10, 46, 0.6);
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(165, 180, 252, 0.25);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 85vw, 360px), 1fr));
+  gap: clamp(12px, 2vw, 18px);
+  max-width: 900px;
+  width: 100%;
+}
+
+.achievement-card {
+  background: var(--surface);
+  border: 2px solid var(--surface-light);
+  border-radius: 12px;
+  padding: clamp(14px, 2.5vw, 20px);
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 18px);
+  transition: all 0.25s ease;
+}
+
+.achievement-card.unlocked {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(255, 217, 61, 0.2);
+}
+
+.achievement-card.locked {
+  opacity: 0.55;
+}
+
+.achievement-icon {
+  font-size: clamp(28px, 5vw, 36px);
+  min-width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.achievement-card.locked .achievement-icon {
+  filter: grayscale(1);
+}
+
+.achievement-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.achievement-info h3 {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.achievement-info p {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   GLOBAL BACK BUTTON
+   ========================================================================== */
+.back-button {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top, 14px));
+  left: max(14px, env(safe-area-inset-left, 14px));
+  z-index: 120;
+  background: rgba(10, 10, 46, 0.88);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-xs);
+  padding: 10px 18px;
+  min-height: 42px;
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button:hover {
+  background: var(--primary);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-2px);
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   MODAL / CONFIRM DIALOG
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.25s ease-out;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 18px;
+  padding: clamp(24px, 5vw, 36px);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.5vh, 22px);
+  animation: scaleIn 0.3s ease-out;
+  box-sizing: border-box;
+}
+
+.modal-content h2 {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-pixel-base);
+  color: var(--accent);
+  line-height: 1.4;
+}
+
+.modal-content p {
+  color: var(--text-secondary);
+  font-size: var(--fs-body-base);
+  line-height: 1.6;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-buttons .arcade-btn {
+  flex: 1 1 140px;
+}

@@ -1,0 +1,73 @@
+// Daftar Pencapaian (Achievements) untuk Giselle
+export const ACHIEVEMENTS = [
+  {
+    id: 'yap_survivor',
+    name: 'SURVIVOR YAPPING',
+    description: 'Berhasil selamat dari ocehan tak berujung.',
+    icon: '🗣️',
+    secret: false,
+  },
+  {
+    id: 'heart_collector',
+    name: 'KOLEKTOR HATI',
+    description: 'Mengumpulkan 100 cinta & afeksi.',
+    icon: '💖',
+    secret: false,
+  },
+  {
+    id: 'lore_master',
+    name: 'PAHAM LORE PACAR',
+    description: 'Menyelesaikan kuis tentang si developer.',
+    icon: '📚',
+    secret: false,
+  },
+  {
+    id: 'skill_issue',
+    name: 'SKILL ISSUE DETECTED',
+    description: 'Kalah di game memori 5 kali berturut-turut.',
+    icon: '💀',
+    secret: false,
+  },
+  {
+    id: 'certified_simp',
+    name: 'PACAR TERSABAR SEDUNIA',
+    description: 'Menamatkan seluruh mini-game yang ada.',
+    icon: '👑',
+    secret: false,
+  },
+  {
+    id: 'main_character',
+    name: 'KARAKTER UTAMA',
+    description: 'Mendapatkan skor sempurna tanpa salah.',
+    icon: '⭐',
+    secret: false,
+  },
+  {
+    id: 'unemployed_gamer',
+    name: 'GAMER TANPA BEBAN',
+    description: 'Memainkan satu game sebanyak 10 kali.',
+    icon: '🎮',
+    secret: false,
+  },
+  {
+    id: 'devs_favorite',
+    name: 'KESAYANGAN DEVELOPER',
+    description: 'Menemukan pesan tersembunyi (Easter egg)!',
+    icon: '🥚',
+    secret: true,
+  },
+  {
+    id: 'no_thoughts',
+    name: 'GAS DULU BARU BACA',
+    description: 'Asal klik tombol tanpa baca instruksi sama sekali.',
+    icon: '🧠',
+    secret: true,
+  },
+  {
+    id: 'still_here',
+    name: 'MASIH BETAH SAMA AKU',
+    description: 'Menyelesaikan seluruh petualangan arcade ini.',
+    icon: '🏆',
+    secret: false,
+  },
+];
